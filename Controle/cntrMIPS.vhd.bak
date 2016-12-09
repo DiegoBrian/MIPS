@@ -1,0 +1,135 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity cntrMIPS is
+	port (
+		clk:in std_logic;
+		Op: in std_logic_vector(5 downto 0);
+		OpALU,OrigBALU, OrigPC: out std_logic_vector(1 downto 0);
+		OrigAALU: out std_logic;
+		EscreveReg, RegDst, MemparaReg, EscrevePC, EscrevePCCond, IouD,
+		EscreveMem, EscreveIR, LeMem : out std_logic;
+		CtlEND: out std_logic_vector(1 downto 0)
+	);
+end cntrMIPS;
+	
+architecture cntr of cntrMIPS is
+	SUBTYPE microComandos_T is std_logic_vector(0 to 15);
+	SUBTYPE nextAddress_T is std_logic_vector(0 to 1);
+	TYPE microInstrucao_T is RECORD
+		microCmds   : microComandos_T;
+		nextAddress : nextAddress_T;
+	end RECORD;
+
+	TYPE microPrograma_T is array (0 to 13) of microInstrucao_T;
+	--valores para o campo de sequenciamento
+	constant SEQ   : nextAddress_T := "11";
+	constant FETCH : nextAddress_T := "00";
+	constant DISPATCH_1  : nextAddress_T := "01";
+	constant DISPATCH_2  : nextAddress_T := "10";
+	--micro programa: sinais na ordem: EscrevePC = 0, ..., RegDst = 15
+
+	constant mFETCH  : microInstrucao_T := ("1001010000001000", SEQ );--OrigBALU n deveria ser 01?
+	constant mDECODE : microInstrucao_T := ("0000000000011000",DISPATCH_1);--OrigAALU =0, OrigBALU = 11, OpALU=00-- etapa do calculo de
+	--endereço de memória("Address Memory"). 
+	constant mMem1 : microInstrucao_T := ("0000000000010100",DISPATCH_2);
+	constant mLW2 : microInstrucao_T := ("0011000000000000",SEQ);
+	constant mFLW : microInstrucao_T := ("0000001000000010",FETCH); -- etapa de "Finish Load Word"(encerra a leitura da memória).
+	constant mSW2 : microInstrucao_T := ("0010100000000000",FETCH);-- etapa de "Store Word"(escreve na memoria). Memory -> Write ALU
+	constant mRformat1 : microInstrucao_T := ("0000000001000100",SEQ);-- ALU Control (Func Code), SRC1(A), SRC2(B)	
+	constant mFRFormat : microInstrucao_T := ("0000000000000011",FETCH);-- etapa de "Finish R Format"(termina o formato R). 
+	constant mBEQ1 : microInstrucao_T := ("0100000010100100",FETCH);
+	constant mJUMP1 : microInstrucao_T := ("1000000100000000",FETCH);
+	constant mLAIformat1 : microInstrucao_T := ("0000000001010100",SEQ);-- Etapa inicial das instrucoes logico aritmeticas do tipo I
+ 	constant mFLAIformat1 : microInstrucao_T := ("0000000000000010",FETCH);-- etapa de "Fim instrucoes logico aritmeticas do tipo I"
+	constant mJAL1 :  microInstrucao_T := ("0000000000001000",SEQ);-- inicio da etapa de JAL(faz PC +8)
+	constant mFJAL1 : microInstrucao_T := ("1000001100000010",FETCH);-- etapa de "Finish JAL"
+	--constant mJR1 : microInstrucao_T := ("1000000000000100",FETCH);-- etapa de JR(Jump Register). Obs: JR eh tipo R, entao n sei como    		-- trata-lo aki!!
+	-- se tiver na fase de execucao e for JR, CONTROLE DA ULA TEM QUE TRATAR!
+-- 1 (Decode) -> OrigAALU = 0, OrigBALU = 11, OpALU = 00
+-- 2 (Calculo do endereco de memoria) -> OrigAALU = 1, OrigBALU = 10, OpALU = 00
+-- 3 (Acesso a memoria) -> LeMem, IouD = 1
+-- 4 (Etapa de conclusão da leitura da memória) -> RegDst = 0, EscreveReg, MemparaReg = 1
+-- 5 (Acesso à memoria) -> EscreveMem,IouD=1
+-- 6 (Execução) -> OrigAALU = 1, OrigBALU = 00, OpALU = 10
+-- 7 (Conclusão do tipo R) -> RegDst = 1,EscreveReg, MemparaReg= 0
+-- 8 (Conclusão do Branch) -> OrigAALU = 1, OrigBALU = 00, OpALU = 01, EscrevePCCond, OrigPC =01
+-- 9 (Conclusão do jump) -> EscrevePC, OrigPC = 10 
+-- 10 (Logico aritmetica do tipo I) -> OrigAALU = 1, OrigBALU = 10, OpALU = 10
+-- 11 (Fim Logico aritmetica do tipo I) -> -> RegDst = 0,EscreveReg, MemparaReg= 0
+-- 12 (Inicio do JAL) -> OrigAALU = 0, OrigBALU=01
+-- 13 (Fim do JAL) -> EscrevePC, MemParaReg=0, OrigPC= 10, EscreveReg
+-- 14 (JR) -> EscrevePC,OrigPC = 00, OrigAALU= 1, OrigBALU = 00,OpALU= 00(nao sera totalmente feito pelo controle!!)
+	-- Inicio da instanciacao dos componentes
+		component inc 
+				port(Estado_atual: in std_logic_vector(3 downto 0);
+				Proximo_estado: out std_logic_vector(3 downto 0)
+					);
+		end component;
+		component mux_4 
+				port(E0,E1,E2,E3: in std_logic_vector(3 downto 0);
+					 Sel: in std_logic_vector(1 downto 0);
+					 Saida: out std_logic_vector(3 downto 0)
+					);
+		end component;
+		component ROM_despacho1 
+				port(E: in std_logic_vector(5 downto 0);
+					 Saida_R_1: out std_logic_vector(3 downto 0)
+					);
+		end component;
+		component ROM_despacho2 is
+				port(E: in std_logic_vector(5 downto 0);
+					 Saida_R_2: out std_logic_vector(3 downto 0)
+					);
+		end component;			
+	-- Fim da instanciacao dos componentes
+
+	
+	signal Programa: microPrograma_T :=(mFETCH,mDECODE,mMem1,
+	                                    mLW2,mFLW,mSW2,mRformat1,
+	                                    mFRFormat,mBEQ1,mJUMP1,
+	                                    mLAIformat1,mFLAIformat1,
+	                                    mJAL1,mFJAL1);
+	signal saidas: std_logic_vector(0 to 15);
+	signal indice_atual : std_logic_vector(3 downto 0):= (others => '0');
+	signal opcao1,opcao2,opcao3: std_logic_vector(3 downto 0); 
+	signal CntlEND: std_logic_vector(1 downto 0):= (others => '0');
+	signal zero : std_logic_vector(3 downto 0) := (others => '0');
+	signal  proximo_indice : std_logic_vector(3 downto 0);
+--	signal ind_int: integer range 0 to 9;
+	BEGIN
+	ROM1: ROM_despacho1 port map(E=> Op,
+										  Saida_R_1=>opcao1 );
+	ROM2: ROM_despacho2 port map(E=> Op,
+										  Saida_R_2=>opcao2 );
+	Incrementador: inc port map(Estado_atual => indice_atual,
+										 Proximo_estado=>opcao3); 
+	mux : mux_4 port map(E0=>zero,E1=>opcao1,E2=>opcao2,E3=>opcao3,
+								Sel=>CntlEND,
+								Saida=>proximo_indice);
+	
+	registardor_estado:process(clk)
+	begin
+		if(rising_edge(clk)) then
+			indice_atual <= proximo_indice;
+		end if;
+	end process registardor_estado;
+	--ind_int <= to_integer(unsigned(indice_atual));
+	CntlEND <= Programa(to_integer(unsigned(indice_atual))).nextAddress;
+	saidas <= Programa(to_integer(unsigned(indice_atual))).microCmds;
+	EscrevePC <= saidas(0); 
+	EscrevePCCond <= saidas(1);
+	IouD <= saidas(2);
+	LeMem <= saidas(3);
+	EscreveMem <= saidas(4);
+	EscreveIR <= saidas(5);
+	MemparaReg <= saidas(6);
+	OrigPC <= saidas(7 to 8);
+	OpALU <= saidas(9 to 10);
+	OrigBALU <= saidas(11 to 12);
+	OrigAALU <= saidas(13);
+	EscreveReg <= saidas(14);
+	RegDst<=saidas(15);
+	CtlEND <= CntlEND;
+end architecture cntr;

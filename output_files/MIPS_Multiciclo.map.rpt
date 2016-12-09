@@ -1,0 +1,239 @@
+Analysis & Synthesis report for MIPS_Multiciclo
+Fri Dec 09 11:56:31 2016
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Failed - Fri Dec 09 11:56:31 2016          ;
+; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name                      ; MIPS_Multiciclo                            ;
+; Top-level Entity Name              ; MIPS_Multiciclo                            ;
+; Family                             ; Cyclone II                                 ;
+; Total logic elements               ; N/A until Partition Merge                  ;
+;     Total combinational functions  ; N/A until Partition Merge                  ;
+;     Dedicated logic registers      ; N/A until Partition Merge                  ;
+; Total registers                    ; N/A until Partition Merge                  ;
+; Total pins                         ; N/A until Partition Merge                  ;
+; Total virtual pins                 ; N/A until Partition Merge                  ;
+; Total memory bits                  ; N/A until Partition Merge                  ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
+; Total PLLs                         ; N/A until Partition Merge                  ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C70F896C6       ;                    ;
+; Top-level entity name                                                      ; MIPS_Multiciclo    ; MIPS_Multiciclo    ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+    Info: Processing started: Fri Dec 09 11:56:29 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MIPS_Multiciclo -c MIPS_Multiciclo
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2_5.vhd
+    Info (12022): Found design unit 1: mux_2_5-arch
+    Info (12023): Found entity 1: mux_2_5
+Info (12021): Found 2 design units, including 1 entities, in source file mux_4_32.vhd
+    Info (12022): Found design unit 1: mux_4_32-arch
+    Info (12023): Found entity 1: mux_4_32
+Info (12021): Found 2 design units, including 1 entities, in source file ula/ula.vhdl
+    Info (12022): Found design unit 1: ulaMIPS-behavioral
+    Info (12023): Found entity 1: ulaMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file banco_registradores/bregmips.vhd
+    Info (12022): Found design unit 1: bregMIPS-BREG
+    Info (12023): Found entity 1: bregMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file controle/rom_despacho2.vhd
+    Info (12022): Found design unit 1: ROM_despacho2-Monta_ROM_despacho2
+    Info (12023): Found entity 1: ROM_despacho2
+Info (12021): Found 2 design units, including 1 entities, in source file controle/rom_despacho1.vhd
+    Info (12022): Found design unit 1: ROM_despacho1-Monta_ROM_despacho1
+    Info (12023): Found entity 1: ROM_despacho1
+Info (12021): Found 2 design units, including 1 entities, in source file controle/mux_4.vhd
+    Info (12022): Found design unit 1: mux_4-Monta_mux
+    Info (12023): Found entity 1: mux_4
+Info (12021): Found 2 design units, including 1 entities, in source file controle/inc.vhd
+    Info (12022): Found design unit 1: inc-Monta_inc
+    Info (12023): Found entity 1: inc
+Info (12021): Found 2 design units, including 1 entities, in source file controle/cntrmips.vhd
+    Info (12022): Found design unit 1: cntrMIPS-cntr
+    Info (12023): Found entity 1: cntrMIPS
+Info (12021): Found 2 design units, including 1 entities, in source file registrador_habilitacao.vhd
+    Info (12022): Found design unit 1: registrador_habilitacao-arch
+    Info (12023): Found entity 1: registrador_habilitacao
+Info (12021): Found 2 design units, including 1 entities, in source file registrador.vhd
+    Info (12022): Found design unit 1: registrador-arch
+    Info (12023): Found entity 1: registrador
+Info (12021): Found 2 design units, including 1 entities, in source file ext_sinal.vhd
+    Info (12022): Found design unit 1: ext_sinal-ext_sinal_arch
+    Info (12023): Found entity 1: ext_sinal
+Info (12021): Found 2 design units, including 1 entities, in source file desloc2.vhd
+    Info (12022): Found design unit 1: desloc2-desloc2_arch
+    Info (12023): Found entity 1: desloc2
+Info (12021): Found 2 design units, including 1 entities, in source file mux_3.vhd
+    Info (12022): Found design unit 1: mux_3-arch
+    Info (12023): Found entity 1: mux_3
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2.vhd
+    Info (12022): Found design unit 1: mux_2-arch
+    Info (12023): Found entity 1: mux_2
+Info (12021): Found 2 design units, including 1 entities, in source file mips_multiciclo.vhd
+    Info (12022): Found design unit 1: MIPS_Multiciclo-Proc
+    Info (12023): Found entity 1: MIPS_Multiciclo
+Info (12021): Found 1 design units, including 0 entities, in source file proc_bib.vhd
+    Info (12022): Found design unit 1: Proc_bib
+Info (12021): Found 2 design units, including 1 entities, in source file concatpc.vhd
+    Info (12022): Found design unit 1: concatPC-concatPC_arch
+    Info (12023): Found entity 1: concatPC
+Info (12127): Elaborating entity "MIPS_Multiciclo" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D0" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D6" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(11): used implicit default value for signal "D7" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(16): used implicit default value for signal "nPC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(17): used implicit default value for signal "Controle_PC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(19): used implicit default value for signal "SaidaALU" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(20): used implicit default value for signal "IouD" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(20): used implicit default value for signal "EscreveIR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(20): used implicit default value for signal "RegDst" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(20): used implicit default value for signal "MemparaReg" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(20): used implicit default value for signal "EscreveReg" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(21): object "End_Mem" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(22): used implicit default value for signal "SaidaMem" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(23): object "shamt" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(24): object "Opcode" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(24): object "funct" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(25): object "k16" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(26): object "k26" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(30): used explicit default value for signal "ra" because signal was never assigned a value
+Warning (10541): VHDL Signal Declaration warning at MIPS_Multiciclo.vhd(31): used implicit default value for signal "EhJal" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(32): object "r1" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS_Multiciclo.vhd(32): object "r2" assigned a value but never read
+Error (10324): VHDL Expression error at MIPS_Multiciclo.vhd(67): expression ""111111"" has 6 elements ; expected 5 elements. File: C:/Users/Paca/Dropbox/OAC/Trabalho_Final/MIPS_Multiciclo.vhd Line: 67
+Error (10346): VHDL error at MIPS_Multiciclo.vhd(67): formal port or parameter "entrada1" must have actual or default value File: C:/Users/Paca/Dropbox/OAC/Trabalho_Final/MIPS_Multiciclo.vhd Line: 67
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 3 errors, 28 warnings
+    Error: Peak virtual memory: 493 megabytes
+    Error: Processing ended: Fri Dec 09 11:56:31 2016
+    Error: Elapsed time: 00:00:02
+    Error: Total CPU time (on all processors): 00:00:01
+
+

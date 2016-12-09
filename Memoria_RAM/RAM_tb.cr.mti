@@ -1,0 +1,18 @@
+C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd {1 {vcom -work RAM_tb -2002 -explicit C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ramtest
+-- Compiling architecture SYN of ramtest
+
+} {} {}} C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd {1 {vcom -work RAM_tb -2002 -explicit C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ramtest_tb
+-- Compiling architecture ramtest_arch of ramtest_tb
+
+} {} {}}

@@ -1,0 +1,17 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use work.Proc_bib.all;
+
+entity concatPC is
+port (K28 : in std_logic_vector (27 downto 0);
+		PC32 : in std_logic_vector (31 downto 0);
+		concat32 : out std_logic_vector (31 downto 0)
+		);
+end entity;
+
+architecture concatPC_arch of concatPC is
+
+begin
+	concat32 <= K28 & PC32(28 donwto 31);
+
+end architecture;

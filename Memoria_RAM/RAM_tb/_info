@@ -1,0 +1,77 @@
+m255
+K3
+13
+cModel Technology
+dC:\altera\13.0\modelsim_ase\win32aloem
+Eramtest
+Z0 w1478308811
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dC:\Users\Paca\Desktop\OAC\Trabalho6
+Z4 8C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd
+Z5 FC:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd
+l0
+L42
+VBEF7=M]:Gzoz0mLRmJR2j0
+Z6 OV;C;10.1d;51
+32
+Z7 !s108 1478309453.193000
+Z8 !s90 -reportprogress|300|-work|RAM_tb|-2002|-explicit|C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd|
+Z9 !s107 C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest.vhd|
+Z10 o-work RAM_tb -2002 -explicit -O0
+Z11 tExplicit 1
+!s100 QPDB^S@17?fRdhe2ZJO3o3
+!i10b 1
+Asyn
+R1
+R2
+DEx4 work 7 ramtest 0 22 BEF7=M]:Gzoz0mLRmJR2j0
+l86
+L54
+VI:Oeh6QnPb[zIg7CaVIlb0
+!s100 B<BYXj`HWcdHC@IoVn2oK3
+R6
+32
+R7
+R8
+R9
+R10
+R11
+!i10b 1
+Eramtest_tb
+Z12 w1478309409
+Z13 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+R2
+R3
+Z14 8C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd
+Z15 FC:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd
+l0
+L7
+Vz:AdnWNId4zcEbT0iIFf41
+!s100 n_9h[YSG1IEX__SQAa[=J3
+R6
+32
+!i10b 1
+Z16 !s108 1478309453.589000
+Z17 !s90 -reportprogress|300|-work|RAM_tb|-2002|-explicit|C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd|
+Z18 !s107 C:/Users/Paca/Desktop/OAC/Trabalho6/ramtest_tb.vhd|
+R10
+R11
+Aramtest_arch
+R13
+R1
+R2
+DEx4 work 10 ramtest_tb 0 22 z:AdnWNId4zcEbT0iIFf41
+l32
+L10
+V0ez1L0DUI^beEMW]6LEgO0
+!s100 iRaGMLE3n6z=`2oB1ZJ`C1
+R6
+32
+!i10b 1
+R16
+R17
+R18
+R10
+R11
